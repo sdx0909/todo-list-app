@@ -74,3 +74,99 @@ function App() {
 
 export default App;
 ```
+
+## Laying the Application’s Foundation
+
+* The application will need several icons to make the buttons appear distinct.
+* There’s a library called `react-icons` that provides many publicly available icons.
+* To use the library, install it with `npm` first:
+  
+```cmd
+npm install react-icons
+```
+
+* Now we can import the icons to the `App.jsx` file like this:
+
+```js
+import { FaCheckSquare } from "react-icons/fa";
+import { BsCheck2Square } from "react-icons/bs";
+import { TbRefresh } from "react-icons/tb";
+import { FaRegEdit } from "react-icons/fa";
+import { RiDeleteBin7Line } from "react-icons/ri";
+```
+
+* In your `App` component, create a state named `tasks` as follows:
+
+```js
+const [tasks, setTasks] = useState([
+    {
+      title: "Learn JavaScript",
+      completed: true,
+      id: 1,
+    },
+    {
+      title: "Learn React",
+      completed: false,
+      id: 2,
+    },
+  ]);
+```
+
+* This `tasks` state will serve as the dummy data for our tasks until we connect the backend server with our application.
+* For now, a local state would be enough so that we can develop the front-end part faster.
+* Inside the `App` component, write a `return` statement and add the task `title` part as follows:
+
+```js
+return (
+    // Task Title
+    <div className="max-w-lg px-5 m-auto mt-20">
+      <h1 className="flex justify-center text-3xl font-bold underline">
+        My Todo List
+        <FaCheckSquare style={{ color: "#42c239" }} />
+      </h1>
+    </div>
+  );
+```
+
+* Here, we simply create an `<h1>` element wrapped inside a `<div>` element.
+* We also use the `<FaCheckSquare>` component imported from the React Icons library.
+* The next step is to add the form so that users can enter their tasks:
+
+```js
+return (
+    <>
+      {/* Task Title */}
+      <div className="max-w-lg px-5 m-auto mt-20">
+        <h1 className="flex justify-center text-3xl font-bold underline">
+          My Todo List
+          <FaCheckSquare style={{ color: "#42c239" }} />
+        </h1>
+      </div>
+      {/* Add Task-from */}
+      <form action="">
+        <div className="flex items-center w-full max-w-lg gap-2 p-5 m-auto">
+          <input
+            type="text"
+            placeholder="start typing..."
+            className="w-full px-5 py-2 bg-transparent border-2 outline-none border-zinc-200 rounded-xl placeholder:text-zinc-500 focus:border-zinc-700"
+          />
+          <button
+            type="submit"
+            className="px-5 py-2 text-white bg-blue-500 border-2 border-transparent rounded-lg hover:bg-blue-700"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </>
+  );
+```
+
+* There’s nothing special with the elements above, except that we add the wrapper `<> .. </>` to wrap the two components we have.
+* The `className` is long because we’re using `Tailwind CSS`.
+* Below the `<form>` element, create an `<ul>` element where we will iterate over the tasks array and show the tasks as a list.
+* We add three buttons in the element so that users can `delete`, `edit`, and `mark` a task as completed.
+  
+```js
+
+```
