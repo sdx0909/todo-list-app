@@ -168,5 +168,110 @@ return (
 * We add three buttons in the element so that users can `delete`, `edit`, and `mark` a task as completed.
   
 ```js
-
+return (
+    <>
+      {/* Task Title */}
+      {/* Add Task-Form */}
+      {/* Task-List */}
+      <ul className="grid max-w-lg gap-2 px-5 m-auto">
+        {tasks.map((task) => (
+          <li
+            key={task.id}
+            className={`p-5 rounded-xl bg-zinc-200 ${
+              // if task-copleted looks like "hide"
+              task.completed ? "bg-opacity-50 text-zinc-500" : ""
+            }`}
+          >
+            <div className="flex flex-col gap-5">
+              <span
+                style={{
+                  // if task completed then "line-through"
+                  textDecoration: task.completed ? "line-through" : "none",
+                }}
+              >
+                {task.title}
+              </span>
+              <div className="flex justify-between gap-5">
+                <button>
+                  {task.completed ? (
+                    // if task.completed true then
+                    <span className="flex items-center gap-1 hover:underline">
+                      <TbRefresh />
+                      Set Active
+                    </span>
+                  ) : (
+                    <span className="flex items-center gap-1 hover:underline">
+                      <BsCheck2Square />
+                      Set Completed
+                    </span>
+                  )}
+                </button>
+                <div className="flex items-center gap-2">
+                  <button className="flex items-center gap-1 hover:underline">
+                    <FaRegEdit />
+                    Edit
+                  </button>
+                  <button
+                    className="flex items-center gap-1 text-red-500
+ hover:underline"
+                  >
+                    <RiDeleteBin7Line />
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </>
+);
 ```
+
+* There are also three conditional renderings in this `<ul>` element.
+* One for the `<li>` element to make the background less **opaque** when the task is completed:
+
+```js
+<li
+    key={task.id}
+    className={`p-5 rounded-xl bg-zinc-200 ${
+      // if task-copleted looks like hide
+      task.completed ? "bg-opacity-50 text-zinc-500" : ""
+    }`}
+>
+</li>
+```
+
+* One to ~~cross out~~ the task title when the task is completed:
+
+```js
+<span
+  style={{
+  // if task completed then "line-through"
+  textDecoration: task.completed ? "line-through" : "none",
+  }}
+  >
+{task.title}
+</span>
+```
+
+* And one for setting the button text between `Set Active` and `Set Completed`
+  
+```js
+<button>
+    {task.completed ? (
+      // if task.completed true then
+      <span className="flex items-center gap-1 hover:underline">
+        <TbRefresh />
+        Set Active
+      </span>
+    ) : (
+      <span className="flex items-center gap-1 hover:underline">
+        <BsCheck2Square />
+        Set Completed
+      </span>
+    )}
+</button>
+```
+
+* You can save the changes and run the application to see that we have the application foundation done.
