@@ -275,3 +275,29 @@ return (
 ```
 
 * You can save the changes and run the application to see that we have the application foundation done.
+
+## Updating States and Seperating the Components
+
+* Now that we have a dummy state for the tasks data, the next step is to add functionalities to update the state so that we can `add`, `remove`, and `update` the values.
+* Before proceeding with the development, let’s install two more
+packages required for this application:
+
+```cmd
+npm install react-hot-toast nanoid
+```
+
+* The `react-hot-toast` is a package that enables you to create a toast notification, you can see an example demo at **<https://react-hot-toast.com>**.
+* The `nanoid` package is used to create a random and unique string ID.
+* This will be used every time we add a new task to the state.
+* We’re also going to separate the components into smaller pieces of the interface to make it easier to maintain.
+* Inside the `src/` folder, create a new folder named `components`.
+* Inside the folder, create a new JSX file named `AddTask.jsx`.
+
+### Creating the `AddTask` Component
+
+* The `AddTask` component will host the input and the button required to add a new task to the state.
+* We need a `state` to manage the input value, which serves as the title of the new task:
+  
+```js
+
+```
